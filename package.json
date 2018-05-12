@@ -1,0 +1,35 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm run start --prefix client",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdcoder/Disease-predictor.git"
+  },
+  "keywords": [
+    "Deepgit",
+    "Learning",
+    "ReactJS",
+    "NodeJS"
+  ],
+  "author": "Prakash Das",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pdcoder/Disease-predictor/issues"
+  },
+  "homepage": "https://github.com/pdcoder/Disease-predictor#readme",
+  "dependencies": {
+    "brain": "^1.0.0",
+    "create-react-app": "^1.5.2",
+    "keras-js": "^1.0.3",
+    "node-gyp": "^3.6.2",
+    "nodemon": "^1.17.4"
+  }
+}
