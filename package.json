@@ -28,8 +28,12 @@
   "dependencies": {
     "brain": "^1.0.0",
     "concurrently": "^3.5.1",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
     "create-react-app": "^1.5.2",
     "crypto-js": "^3.1.9-1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.15.6",
     "jsonwebtoken": "^8.2.1",
     "keras-js": "^1.0.3",
     "mongoose": "^5.1.0",
@@ -38,6 +42,7 @@
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0",
     "passport-google-oauth20": "^1.0.0",
+    "passport-local": "^1.0.0",
     "validator": "^10.2.0"
   }
 }
