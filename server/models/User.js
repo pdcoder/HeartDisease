@@ -4,16 +4,14 @@ var bcrypt = require('bcrypt-nodejs');
 
 
 var UserSchema = new Schema({
-    email: { type: String, unique: true, lovercase:true},
+    email: { type: String, unique: true, lowercase:true, trim:true},
     password : String,
-    photo : String,
-    profile: {
-        name: {type:String, default:''},
-    }
+    name: {type:String, default:'',trim:true}
+
     
 });
 
-UserSchema.pre('save',(next)=>{
+UserSchema.pre('save',function(next){
     var user = this;
     if(!user.isModified('password'))
     return next();

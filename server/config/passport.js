@@ -1,6 +1,9 @@
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
+var bcrypt = require('bcrypt-nodejs');
+var crypto = require('crypto-js');
+
 
 passport.serializeUser((user,done)=>{
     done(null,user._id);
