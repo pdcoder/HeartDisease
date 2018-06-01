@@ -58,6 +58,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(userroute);
 app.set('views', path.join(__dirname, '/views'));
+app.use(express.static(__dirname + '/public'));
 
 
 

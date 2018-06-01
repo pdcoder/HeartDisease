@@ -11,7 +11,7 @@ var router = require('express').Router();
 
 router.get('/login',(req,res)=>{
     if(req.user) return res.redirect('/');
-    res.render('login',{message: req.flash('loginMessage')});//, crsfToken : req.crsfToken()}); 
+    res.render('signup',{message: req.flash('loginMessage')});//, crsfToken : req.crsfToken()}); 
    
 });
 
@@ -19,7 +19,7 @@ router.get('/login',(req,res)=>{
 
 router.post('/login',passport.authenticate('local-login',{
     successRedirect : '/profile',
-    failureRedirect : '/login',
+    failureRedirect : '/signup',
     failureFlash : true
 }));
 
@@ -36,12 +36,6 @@ router.get('/profile',passportConf.isAuthenticated,(req,res,next)=>{
         res.render('profile',{user:founduser});
     });
 });
-
-router.get('/signup',(req,res,next)=>{
-    res.render('signup',{
-        errors:req.flash('erors')
-    });
-});
    
 router.post('/signup',(req,res,next)=>{
     async.waterfall([(callback)=>{
@@ -56,7 +50,7 @@ router.post('/signup',(req,res,next)=>{
             return res.redirect('/signup');
         }else{
             user.save((err,user)=>{
-                console.log("nserted");
+                console.log(user.email);
 
                 if (err) {
                     console.log(err);
