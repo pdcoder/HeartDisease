@@ -16,11 +16,11 @@ passport.deserializeUser((id,done)=>{
 });
 
 passport.use('local-login', new localStrategy({
-    usernameField : 'email',
-    passwordField: 'password',
+    usernameField : 'prakash1998@gmail.com',
+    passwordField: '$2a$10$4eYOHfbbYdzqoPY4iTrxJeIrmu821M7FFZATL122VS5.HHnBDVNdm',
     passReqToCallback: true
 }, (req,email,password,done)=>{
-User.findOne({email:email},(err,user)=>{
+User.findOne({email:usernameField},(err,user)=>{
     if (err) return done(err);
     
     if(!user){
