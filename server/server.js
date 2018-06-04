@@ -24,7 +24,7 @@ app.use(session({
   secure: true,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 60000 },
+    cookie: {expires: new Date() - 1},
     store: new MongoStore({url:keys.mongoURI,autoReconnect:true})
   }));
   app.use(bodyParser.json());
@@ -73,5 +73,5 @@ app.use((req, res, next) => {
 
 
   
-const PORT = process.env.PORT || 3500;
+const PORT = process.env.PORT || 3100;
 app.listen(PORT);

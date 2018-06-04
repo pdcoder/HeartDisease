@@ -44,6 +44,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.15.6",
     "express-validator": "^5.2.0",
+    "formidable": "^1.2.1",
     "helmet": "^3.12.1",
     "joi": "^13.3.0",
     "jsonwebtoken": "^8.2.1",
