@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.6"></script>
+    <script>
+            console.log("222");           
+            const model = tf.loadModel('./model.json');
+            const example = tf.tensor1d([63.0,1.0,1.0,145.0,233.0,1.0,2.0,150.0,0.0,2.3,3.0,0.0,6.0]);
+            const prediction = model.predict(example);
+            console.log(example);
+            console.log("222");           
+            
+        </script>
+</head>
+
+
+<body>
+    <h2>ddddsssssssßs</h2>
+        <div class="parallax"></div>
+
+</body>
+
+</html>
