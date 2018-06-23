@@ -1,5 +1,4 @@
 var fs = require('fs');
-const tf = require('@tensorflow/tfjs');
 var User = require('../models/user');
 var express = require('express');
 var app = express();
@@ -7,6 +6,15 @@ var passportConf = require('../services/passport');
 var passport = require('passport');
 var async = require('async');
 var router = require('express').Router();
+
+const tf = require('@tensorflow/tfjs');
+
+// Load the binding:
+//require('@tensorflow/tfjs-node');  // Use '@tensorflow/tfjs-node-gpu' if running with GPU.
+
+// Set the backend to TensorFlow:
+//tf.setBackend('tensorflow');
+
 var bufferEq = require('buffer-equal-constant-time');
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -17,7 +25,19 @@ router.get('/products/:id', function (req, res, next) {
   res.json({msg: 'This is CORS-enabled for all origins!'})
 })
  
+module.exports = function (req, res, next) {
+  // CORS headers
+  res.header("Access-Control-Allow-Origin", "YOUR_URL"); // restrict it to the required domain
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  // Set custom headers for CORS
+  res.header("Access-Control-Allow-Headers", "Content-type,Accept,X-Custom-Header");
 
+  if (req.method === "OPTIONS") {
+      return res.status(200).end();
+  }
+
+  return next();
+};
 
 router.get('/login',(req,res)=>{
     if(req.user) return res.redirect('/');
@@ -74,7 +94,7 @@ router.post('/signup',(req,res,next)=>{
 });
 
 router.get('/profile', function (req, res, next) {
-    User.findById(req.session.userId)
+    /*User.findById(req.session.userId)
       .exec(function (error, user) {
         if (error) {
           return next(error);
@@ -87,13 +107,13 @@ router.get('/profile', function (req, res, next) {
           } else {
 return res.render('profile');          }
         }
-      });
+      });*/
+      return res.render('profile');
   });
 
   router.get('/main',(req,res,next)=>{
       res.render('main');
-
-      //https://drive.google.com/open?id=1Bb8faUY3k3tEAvWPX28Yl5N_8kI-lJHg
+      
   });
 
 
