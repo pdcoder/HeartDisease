@@ -1,4 +1,4 @@
-const passport = require('passport');
+/*const passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 const keys = require('../config/keys');
@@ -9,7 +9,7 @@ const keys = require('../config/keys');
     callbackURL: '/auth/google/callback'
     },(accessToken,refreshToken,profile,done)=>{
     console.log(profile);
-    }));*/
+    }));
 
 
 
@@ -49,3 +49,4 @@ const keys = require('../config/keys');
         }
         res.redirect('/login');
     }
+    */

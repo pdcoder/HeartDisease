@@ -2,19 +2,19 @@ const express = require('express');
 var bodyParser = require('body-parser');
 var cookie = require('cookie-parser');
 var session = require('express-session');
-const helmet = require('helmet');
-const csrf = require('csurf');
-var validator = require('express-validator');
-var MongoStore = require('connect-mongo')(session);
-var app = express();
-var flash= require('connect-flash');
+//const helmet = require('helmet');
+//const csrf = require('csurf');
+//var validator = require('express-validator');
+//var MongoStore = require('connect-mongo')(session);
+  var app = express();
+//var flash= require('connect-flash');
 const mongoose = require('mongoose');
 var path = require('path');
-var keys = require('./config/keys');
-var cors = require('cors')
+//var keys = require('./config/keys');
+//var cors = require('cors')
 
-mongoose.connect(keys.mongoURI);
-mongoose.Promise = global.Promise;
+//mongoose.connect(keys.mongoURI);
+//mongoose.Promise = global.Promise;
 module.exports = function (req, res, next) {
   // CORS headers
   res.header("Access-Control-Allow-Origin", "YOUR_URL"); // restrict it to the required domain
@@ -29,7 +29,7 @@ module.exports = function (req, res, next) {
   return next();
 };
 
-app.use(cookie());
+/*app.use(cookie());
 app.use(cors());
 app.use(helmet());
 app.use(session({
@@ -42,8 +42,7 @@ app.use(session({
     cookie: {expires: new Date() - 1},
     store: new MongoStore({url:keys.mongoURI,autoReconnect:true})
   }));
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: true }));
+  
 //app.use(csrf({ cookie : false }));
 
 
@@ -53,7 +52,9 @@ app.use((req, res, next) => {
     res.locals.error_messages = req.flash('error');
     next()
   });
-
+*/
+app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
 var router = express.Router();
 require('./services/passport');
 const route = require('./routes/authRoutes');
@@ -64,7 +65,7 @@ var bycrypt = require('bcrypt-nodejs');
 app.use(userroute);
 var ejs = require('ejs');
 var engine = require('ejs-mate');
-app.use(validator());
+//app.use(validator());
 
 
 app.set('view engine', 'ejs');
