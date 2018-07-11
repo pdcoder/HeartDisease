@@ -3,18 +3,21 @@
 <body>
 <form method="post" action="/main">
   <div class="form-group">
-  <input type="text" class="form-control" placeholder ="Enter your age" name="age" value="60" />
+  <label for="age">Enter your age:</label>
+  <input id="age" type="text" class="form-control" placeholder ="Enter your age" name="age" value="60" />
   </div>
   <br>
   <div class="form-group">
-  <select class="form-control" name="sex">
+      <label for="sex">Enter your gender:</label>
+  <select id="sex" class="form-control" name="sex">
     <option>Male</option>
     <option>Female</option>
   </select>
   </div>
   <br>
   <div class="form-group">
-  <select class="form-control" name="cp">
+      <label for="cp">Enter chest pain type:</label>
+  <select id="cp" class="form-control" name="cp">
     <option>Typical angina</option>
     <option>Atypical angina</option>
     <option>Non-anginal pain</option>
@@ -23,22 +26,27 @@
   </div>
   <br>
   <div class="form-group">
+      <label for="bps">Enter Blood Pressure:</label>
 
-  <input type="text" class="form-control"  placeholder ="Resting blood pressure (in mm Hg)" name="bps" value="130"/>
+  <input id="bps" type="text" class="form-control"  placeholder ="Resting blood pressure (in mm Hg)" name="bps" value="130"/>
   </div>
   <br>
   <div class="form-group">
+      <label for="chol">Enter your Cholestrol level:</label>
 
-  <input type="text"  class="form-control" placeholder ="Enter serum cholestoral in mg/dl" name="chol" value="206"/>
+  <input id="chol" type="text"  class="form-control" placeholder ="Enter serum cholestoral in mg/dl" name="chol" value="206"/>
   </div>
   <br>
   <div class="form-group">
+      <label for="fbs">Enter Fasting blood pressure:</label>
 
-  <input type="text" class="form-control"  placeholder ="Fasting blood sugar in mg/dl" name="fbs"/>
+  <input id="fbs" type="text" class="form-control"  placeholder ="Fasting blood sugar in mg/dl" name="fbs"/>
   </div>
   <br>
   <div class="form-group">
-  <select class="form-control"   name="restecg">
+      <label for="ecg">Enter ECG type:</label>
+
+  <select id="ecg" class="form-control"   name="restecg">
     <option>Normal</option>
     <option>Having ST-T wave abnormality</option>
     <option>Showing probable or definite left ventricular hypertrophy</option>
@@ -47,26 +55,30 @@
   </div>
   <br>
  <div class="form-group">
+    <label for="thalach">Maximum heart rate achieved:</label>
 
-  <input type="text" class="form-control" placeholder ="Maximum heart rate achieved" name="thalach" value="132" />
+  <input id ="thalach" type="text" class="form-control" placeholder ="Maximum heart rate achieved" name="thalach" value="132" />
   </div>
   <br>
   <div class="form-group">
+      <label for="exang">Exarcise induced angina:</label>
 
-  <select class="form-control" name="exang" >
+  <select id="exang" class="form-control" name="exang" >
     <option>Yes</option>
       <option>No</option>
       </select>
   </div>
   <br>
   <div class="form-group">
+      <label for="oldpeak">ST depression induced by exercise relative to rest:</label>
 
-  <input type="text" class="form-control" placeholder ="ST depression induced by exercise relative to rest" name="oldpeak" value="2.4" />
+  <input od="oldpeak" type="text" class="form-control" placeholder ="ST depression induced by exercise relative to rest" name="oldpeak" value="2.4" />
   </div>
   <br>
   <div class="form-group">
+      <label for="slope">Slope of the peak exercise ST segment:</label>
 
-  <select class="form-control"name="slope">
+  <select id="slope" class="form-control"name="slope">
     <option>Upsloping</option>
     <option>Flat</option>
     <option>Downsloping</option>
@@ -74,13 +86,14 @@
   </div>
   <br>
   <div class="form-group">
-
-  <input type="text" class="form-control" placeholder ="Number of major vessels (0-3)" name="ca" value="2"/>
+<label for="ca">Number of major vessels:</label>
+  <input id="ca" type="text" class="form-control" placeholder ="Number of major vessels (0-3)" name="ca" value="2"/>
   </div>
   <br>
   <div class="form-group">
+      <label for="thal">Thalassamia:</label>
 
-  <select class="form-control"  name="thal">
+  <select id="thal" class="form-control"  name="thal">
     <option>Normal</option>
     <option>Fixed Defect</option>
     <option>Reversible Defect</option>

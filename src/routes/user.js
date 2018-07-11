@@ -97,11 +97,12 @@ router.get('/profile', function (req, res, next) {
             var err = new Error('Not authorized! Go back!');
             return next(err);
           } else {
-return res.render('profile',{name:user.name});     
+            console.log(user.name);
+res.render('profile',{name:user.name});     
      }
         }
       });
-      return res.render('profile',{name:""});
+       res.render('profile',{name:""});
   });
 
   router.get('/main',(req,res,next)=>{
@@ -112,18 +113,56 @@ return res.render('profile',{name:user.name});
   router.post('/main',(req,res,next)=>{
 const model1 = tf.loadModel('file://src/public/model/model.json').then(function(mod){
 var age = req.body.age;
-var sex = req.body.sex;
-var cp = req.body.cp;
+if(req.body.sex==="Male")
+var sex = 1;
+else
+var sex = 0;
+console.log(sex);
+if(req.body.cp==="Typical angina")
+var cp =1;
+else if(req.body.cp==="Atypical angina")
+var cp =2;
+else if(req.body.cp==="Non-anginal pain")
+var cp =3;
+else
+var cp =4;
 var bps = req.body.bps;
 var chol = req.body.chol
-var fbs = req.body.fbs;
-var restecg = req.body.restecg;
+if(req.body.fbs>=120)
+var fbs = 1;
+else
+var fbs = 0;
+if(req.body.restecg==="Normal")
+var restecg = 0;
+else if(req.body.restecg==="Having ST-T wave abnormality")
+var restecg = 1;
+else
+var restecg =2;
 var thalach = req.body.thalach;
-var exang = req.body.exang;
+if(req.body.exang==="Yes")
+var exang = 1;
+else
+var exang = 0;
+console.log(exang);
+
 var oldpeak = req.body.oldpeak;
-var slope = req.body.slope;
+if(req.body.slope==="Upsloping")
+var slope = 1;
+else if(req.body.slope==="Flat")
+var slope = 2;
+else
+var slope = 3;
+console.log(slope);
+
 var ca = req.body.ca;
-var thal = req.body.thal;
+if(req.body.thal==="Normal")
+var thal = 3;
+else if(req.body.thal==="Fixed Defect")
+var thal = 6;
+else
+var thal = 7;
+console.log(thal);
+
 const a = (age-54.859030837004404)/9.081978327339046;   //60.0,1.0,4.0,130.0,206.0,0.0,2.0,132.0,1.0,2.4,2.0,2.0,7.0,4
   const b = (sex-0.6916299559471366)/0.4618202680520838;
   const c = (cp-3.198237885462555)/0.971123367751433;
@@ -138,6 +177,7 @@ const a = (age-54.859030837004404)/9.081978327339046;   //60.0,1.0,4.0,130.0,206
   const l = (ca-0.6563876651982379)/0.9273101593609425;
   const m = (thal-4.823788546255507)/1.9315962468937902;
   const test = tf.tensor([[a,b,c,d,e,f,g,h,i,j,k,l,m]]);
+  
   var tensor = mod.predict(test).argMax(1);
   res.render('main',{tensor:String(tensor).substring(8)});
 }).catch(function(err)
