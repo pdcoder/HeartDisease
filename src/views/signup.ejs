@@ -11,7 +11,7 @@
     </div>
     <div class="form form--signup">
       <div class="form--heading">Welcome! Sign Up</div>
-      <form autocomplete="off">
+      <form action="/signup" method="POST" autocomplete="off">
         <input type="text" name="name" placeholder="Name">
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
@@ -20,9 +20,9 @@
     </div>
     <div class="form form--login">
       <div class="form--heading">Welcome back! </div>
-      <form autocomplete="off">
-        <input type="text" placeholder="Name">
-        <input type="password" placeholder="Password">
+      <form action="/login" method="POST" autocomplete="off">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password"  name="password" placeholder="Password">
         <button class="button">Login</button>
       </form>
     </div>

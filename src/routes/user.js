@@ -94,15 +94,14 @@ router.get('/profile', function (req, res, next) {
           return next(error);
         } else {
           if (user === null) {
-            res.send("no");
             var err = new Error('Not authorized! Go back!');
-            err.status = 400;
             return next(err);
           } else {
-return res.render('profile');          }
+return res.render('profile',{name:user.name});     
+     }
         }
       });
-      return res.render('profile');
+      return res.render('profile',{name:""});
   });
 
   router.get('/main',(req,res,next)=>{
