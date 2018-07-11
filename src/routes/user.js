@@ -37,7 +37,7 @@ module.exports = function (req, res, next) {
 
 router.get('/login',(req,res)=>{
     if(req.user) return res.redirect('/');
-    res.render('signup',{message: req.flash('loginMessage')});//, crsfToken : req.crsfToken()}); 
+    res.render('signup');//, crsfToken : req.crsfToken()}); 
    
 });
 
@@ -55,9 +55,7 @@ User.authenticate(req.body.email, req.body.password, function (error, user) {
 });
 
 router.get('/signup',(req,res,next)=>{
-    res.render('signup',{
-       errors: req.flash('errors')
-    });
+    res.render('signup');
 });
 
 router.get('/',(req,res,next)=>{
@@ -90,7 +88,7 @@ router.post('/signup',(req,res,next)=>{
 });
 
 router.get('/profile', function (req, res, next) {
-    /*User.findById(req.session.userId)
+    User.findById(req.session.userId)
       .exec(function (error, user) {
         if (error) {
           return next(error);
@@ -103,7 +101,7 @@ router.get('/profile', function (req, res, next) {
           } else {
 return res.render('profile');          }
         }
-      });*/
+      });
       return res.render('profile');
   });
 
@@ -165,6 +163,11 @@ router.get('/logout', function(req, res, next) {
   });
 
 
+
+router.get('/test',function(req,res,next){
+  var json = require('./test.json');
+  res.render('test',{data:json});
+});
 
 
 

@@ -2,19 +2,24 @@ const express = require('express');
 var bodyParser = require('body-parser');
 var cookie = require('cookie-parser');
 var session = require('express-session');
-//const helmet = require('helmet');
-//const csrf = require('csurf');
-//var validator = require('express-validator');
-//var MongoStore = require('connect-mongo')(session);
+var MongoStore = require('connect-mongo')(session);
   var app = express();
 //var flash= require('connect-flash');
 const mongoose = require('mongoose');
 var path = require('path');
-//var keys = require('./config/keys');
+var keys = require('./config/keys');
 //var cors = require('cors')
 
-//mongoose.connect(keys.mongoURI);
-//mongoose.Promise = global.Promise;
+mongoose.connect(keys.mongoURI);
+var db = mongoose.connection;
+mongoose.Promise = global.Promise;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log("We are connected");
+});
+
+
+
 module.exports = function (req, res, next) {
   // CORS headers
   res.header("Access-Control-Allow-Origin", "YOUR_URL"); // restrict it to the required domain
@@ -29,9 +34,8 @@ module.exports = function (req, res, next) {
   return next();
 };
 
-/*app.use(cookie());
-app.use(cors());
-app.use(helmet());
+app.use(cookie());
+//app.use(cors());
 app.use(session({
     secret: 'super-secret-key',
     key: 'super-secret-cookie',
@@ -46,13 +50,6 @@ app.use(session({
 //app.use(csrf({ cookie : false }));
 
 
-app.use(flash());
-app.use((req, res, next) => {
-    res.locals.success_mesages = req.flash('success');
-    res.locals.error_messages = req.flash('error');
-    next()
-  });
-*/
 app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 var router = express.Router();

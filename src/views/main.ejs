@@ -3,67 +3,101 @@
 <body>
 <form method="post" action="/main">
   <div class="form-group">
-  <input type="number" class="form-control" placeholder ="age" name="age" value="60" />
+  <input type="text" class="form-control" placeholder ="Enter your age" name="age" value="60" />
   </div>
   <br>
   <div class="form-group">
-  <input type="number" class="form-control" placeholder ="sex" name="sex" value="1"/>
+  <select class="form-control" name="sex">
+    <option>Male</option>
+    <option>Female</option>
+  </select>
   </div>
   <br>
   <div class="form-group">
-  <input type="text" class="form-control" placeholder ="cp" name="cp" value="4"/>
+  <select class="form-control" name="cp">
+    <option>Typical angina</option>
+    <option>Atypical angina</option>
+    <option>Non-anginal pain</option>
+    <option>Assymptotic</option>
+    </select>
   </div>
   <br>
   <div class="form-group">
 
-  <input type="text" class="form-control"  placeholder ="bps" name="bps" value="130"/>
+  <input type="text" class="form-control"  placeholder ="Resting blood pressure (in mm Hg)" name="bps" value="130"/>
   </div>
   <br>
   <div class="form-group">
 
-  <input type="text"  class="form-control" placeholder ="chol" name="chol" value="206"/>
+  <input type="text"  class="form-control" placeholder ="Enter serum cholestoral in mg/dl" name="chol" value="206"/>
   </div>
   <br>
   <div class="form-group">
 
-  <input type="text" class="form-control"  placeholder ="fbs" name="fbs" value="0"/>
+  <input type="text" class="form-control"  placeholder ="Fasting blood sugar in mg/dl" name="fbs"/>
   </div>
   <br>
   <div class="form-group">
-  <input type="text" class="form-control"  placeholder ="restecg" name="restecg" value="2"/>
+  <select class="form-control"   name="restecg">
+    <option>Normal</option>
+    <option>Having ST-T wave abnormality</option>
+    <option>Showing probable or definite left ventricular hypertrophy</option>
+
+  </select>
   </div>
   <br>
  <div class="form-group">
 
-  <input type="text" class="form-control" placeholder ="thalach" name="thalach" value="132" />
+  <input type="text" class="form-control" placeholder ="Maximum heart rate achieved" name="thalach" value="132" />
   </div>
   <br>
   <div class="form-group">
 
-  <input type="text" class="form-control" placeholder ="exang" name="exang" value="1"/>
+  <select class="form-control" name="exang" >
+    <option>Yes</option>
+      <option>No</option>
+      </select>
   </div>
   <br>
   <div class="form-group">
 
-  <input type="text" class="form-control" placeholder ="oldpeak" name="oldpeak" value="2.4" />
+  <input type="text" class="form-control" placeholder ="ST depression induced by exercise relative to rest" name="oldpeak" value="2.4" />
   </div>
   <br>
   <div class="form-group">
 
-  <input type="text" class="form-control" placeholder ="slope" name="slope" value="2"/>
+  <select class="form-control"name="slope">
+    <option>Upsloping</option>
+    <option>Flat</option>
+    <option>Downsloping</option>
+</select>
   </div>
   <br>
   <div class="form-group">
 
-  <input type="text" class="form-control" placeholder ="ca" name="ca" value="2"/>
+  <input type="text" class="form-control" placeholder ="Number of major vessels (0-3)" name="ca" value="2"/>
   </div>
   <br>
   <div class="form-group">
 
-  <input type="text" class="form-control" placeholder ="thal" name="thal" value="7"/>
+  <select class="form-control"  name="thal">
+    <option>Normal</option>
+    <option>Fixed Defect</option>
+    <option>Reversible Defect</option>
+</select>
   </div>
   <br>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
-<%= tensor %>
+<script type='text/javascript' src="../public/js/form.js"></script>
+<% if(tensor!==""){ %>
+
+<div id="box1" class="box blurred-bg tinted">
+    <div class="content">
+      <h1>Predicted Result</h1>
+  <p><%= tensor %></p>
+        <p>Drag this box to move around</p>
+    </div>
+  </div>
+  <% } %>
 <% include ./footer.ejs %>
