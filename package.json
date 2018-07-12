@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
-    },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pdcoder/Disease-predictor.git"
@@ -32,6 +32,7 @@
     "create-react-app": "^1.5.2",
     "ejs": "^2.6.1",
     "ejs-mate": "^2.3.0",
+    "express": "^4.16.3",
     "express-session": "^1.15.6",
     "keras-js": "^1.0.3",
     "mongoose": "^5.2.1",
