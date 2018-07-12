@@ -1,5 +1,28 @@
-<% include ./header.ejs %>
-
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Disease Predictor</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+    <link href="/css/main.css" rel="stylesheet" type="text/css">
+    <script src="/js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <meta name="theme-color" content="#FF5722" />
+    </head>
+    <body>
+        <div class="loader">Loading...</div>
+      <div class="topnav" id="myTopnav">
+            <a href="/" class="active">MyHeart</a>
+            <a href="/profile">Profile</a>
+            <a href="/main">Predict</a>
+            <a href="/about">About</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+          </div>
+          <div class="border">
 <aside class="profile-card">
   <header>
     <!-- here’s the avatar -->
@@ -56,4 +79,6 @@
   </ul>
 </aside>
 
-<% include ./footer.ejs %>
+<div class="footer" style="position: absolute">
+    <p class="foot">Copyright &copy; 2018 <a target="_blank" href="https://www.facebook.com/savage.pd756859>">Prakash Das</a></p>
+</div>
