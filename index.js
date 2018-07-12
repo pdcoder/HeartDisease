@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var cookie = require('cookie-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
-  var app = express();
+var app = express();
 //var flash= require('connect-flash');
 const mongoose = require('mongoose');
 var path = require('path');
@@ -53,11 +53,11 @@ app.use(session({
 app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 var router = express.Router();
-require('./services/passport');
-const route = require('./routes/authRoutes');
+require('./src/services/passport');
+const route = require('./src/routes/authRoutes');
 var passport = require('passport');
 
-const userroute = require('./routes/user');
+const userroute = require('./src/routes/user');
 var bycrypt = require('bcrypt-nodejs');
 app.use(userroute);
 var ejs = require('ejs');
@@ -70,13 +70,14 @@ app.engine('ejs', engine);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(userroute);
-app.set('views', path.join(__dirname, '/views'));
-app.use(express.static(__dirname + '/public'));
+app.set('views', path.join(__dirname, './src/views'));
+app.use(express.static(__dirname + '/src/public'));
 
 
 
 app.use((req, res, next) => {
-    res.status(404).send('Page not found');
+    res.status(404);
+    res.render('404');
   });
 
   app.use((err, req, res, next) => {
