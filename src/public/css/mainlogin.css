@@ -188,6 +188,9 @@ form input:focus {
 @media (max-width: 750px) {
   .container {
     transform: scale(0.8);
+    width:90%;
+    height:60%;
+    margin: 0 auto;
   }
 }
 
