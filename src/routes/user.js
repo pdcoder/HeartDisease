@@ -9,7 +9,7 @@ var async = require('async');
 var router = require('express').Router();
 const tf = require('@tensorflow/tfjs');
 require('@tensorflow/tfjs-node');
-tf.setBackend('tensorflow');
+//tf.setBackend('tensorflow');
 const https = require('https');
 
 app.use(function(req, res, next) {
