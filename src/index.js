@@ -20,7 +20,7 @@ db.once('open', function () {
 
 
 
-module.exports = function (req, res, next) {
+/*module.exports = function (req, res, next) {
   // CORS headers
   res.header("Access-Control-Allow-Origin", "YOUR_URL"); // restrict it to the required domain
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
@@ -32,7 +32,7 @@ module.exports = function (req, res, next) {
   }
 
   return next();
-};
+};*/
 
 app.use(cookie());
 //app.use(cors());
@@ -43,7 +43,7 @@ app.use(session({
   secure: true,
     resave: false,
     saveUninitialized: false,
-    cookie: {expires: new Date() - 1},
+    cookie: {expires: 600000},
     store: new MongoStore({url:keys.mongoURI,autoReconnect:true})
   }));
   
@@ -76,7 +76,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.use((req, res, next) => {
-    res.status(404).send("Sorry can't find that!");
+    res.status(404).send('Page not found');
   });
 
   app.use((err, req, res, next) => {

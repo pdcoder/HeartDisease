@@ -9,7 +9,9 @@
 
     <!-- the username -->
     <h1>
-            <%= name %>
+      <% if (name){ %>
+            <%= name.charAt(0).toUpperCase().concat(name.slice(1))%>
+            <% } %>
           </h1>
 
     <!-- and role or location -->

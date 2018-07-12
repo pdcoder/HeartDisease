@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
 router.get('/products/:id', function (req, res, next) {
   res.json({msg: 'This is CORS-enabled for all origins!'})
 })
- 
+ /*
 module.exports = function (req, res, next) {
   // CORS headers
   res.header("Access-Control-Allow-Origin", "YOUR_URL"); // restrict it to the required domain
@@ -33,12 +33,28 @@ module.exports = function (req, res, next) {
   }
 
   return next();
-};
+};*/
 
-router.get('/login',(req,res)=>{
-    if(req.user) return res.redirect('/');
-    res.render('signup');//, crsfToken : req.crsfToken()}); 
-   
+router.get('/',(req,res,next)=>{
+  User.findById(req.session.userId)
+  .exec(function (error, user) {
+    if (error) {
+      return next(error);
+   //  return next();
+    } else {
+      if (user === null) {
+     return res.render('signup');
+       // var err = new Error('Not authorized! Go back!');
+       //return next(err);
+
+      // return next();
+      } else {
+        console.log(req.session.userId);
+        return res.render('profile',{name:user.name});
+      }
+ 
+}
+  });
 });
 
 router.post('/login',(req,res,next)=>{
@@ -49,19 +65,13 @@ User.authenticate(req.body.email, req.body.password, function (error, user) {
       return next(err);
     } else {
       req.session.userId = user._id;
+     // console.log(req.session.userId);
       return res.redirect('/profile');
     }
   });
 });
 
-router.get('/signup',(req,res,next)=>{
-    res.render('signup');
-});
 
-router.get('/',(req,res,next)=>{
-  res.render('signup');
-})
-   
 router.post('/signup',(req,res,next)=>{
     async.waterfall([(callback)=>{
         var user = new User();
@@ -71,8 +81,9 @@ router.post('/signup',(req,res,next)=>{
 
         User.findOne({email:req.body.email},(err,existinguser)=>{
             if(existinguser){
-            req.flash('errors','Account with that email already exists');
-            return res.redirect('/signup');
+            //req.flash('errors','Account with that email already exists');
+            res.send("Exists");
+            return res.redirect('/');
         }else{
             user.save((err,user)=>{ 
                 if (err) {
@@ -91,24 +102,44 @@ router.get('/profile', function (req, res, next) {
     User.findById(req.session.userId)
       .exec(function (error, user) {
         if (error) {
-          return next(error);
+         // return next(error);
+       //  return next();
         } else {
           if (user === null) {
-            var err = new Error('Not authorized! Go back!');
-            return next(err);
+            console.log(req.session);
+            return res.redirect('/');
+      
+
+          // return next();
           } else {
-            console.log(user.name);
-res.render('profile',{name:user.name});     
+
+           return res.render('profile',{name:user.name}); 
      }
         }
       });
-       res.render('profile',{name:""});
   });
 
-  router.get('/main',(req,res,next)=>{
-      res.render('main',{tensor:""});
+  router.get('/main', function (req, res, next) {
+    User.findById(req.session.userId)
+      .exec(function (error, user) {
+        if (error) {
+         // return next(error);
+       //  return next();
+        } else {
+          if (user === null) {
+            console.log(req.session);
+            return res.redirect('/');
+      
 
+          // return next();
+          } else {
+
+           return res.render('main',{tensor:""}); 
+     }
+        }
+      });
   });
+
 
   router.post('/main',(req,res,next)=>{
 const model1 = tf.loadModel('file://src/public/model/model.json').then(function(mod){
@@ -188,27 +219,21 @@ const a = (age-54.859030837004404)/9.081978327339046;   //60.0,1.0,4.0,130.0,206
 });
 
 
+
+
+
 router.get('/logout', function(req, res, next) {
-    if (req.session) {
-      // delete session object
-      req.session.destroy(function(err) {
-        if(err) {
-          return next(err);
-        } else {
-          return res.redirect('/');
-        }
-      });
-    }
-  });
-
-
-
-router.get('/test',function(req,res,next){
-  var json = require('./test.json');
-  res.render('test',{data:json});
+  if (req.session) {
+    // delete session object
+    req.session.destroy(function(err) {
+      if(err) {
+        return next(err);
+      } else {
+        return res.redirect('/');
+      }
+    });
+  }
 });
-
-
 
 
 
