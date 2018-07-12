@@ -7,7 +7,7 @@ var MongoStore = require('connect-mongo')(session);
 //var flash= require('connect-flash');
 const mongoose = require('mongoose');
 var path = require('path');
-var keys = require('./config/keys');
+var keys = require('./src/config/keys');
 //var cors = require('cors')
 
 mongoose.connect(keys.mongoURI);
