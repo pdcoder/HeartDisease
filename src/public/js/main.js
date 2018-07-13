@@ -6,7 +6,16 @@ function myFunction() {
         x.className = "topnav";
     }
 }
+function func(){
+    $('.box').hide();
+}
 
 $('.card').click(function(){
     $(this).toggleClass('flipped');
   });
+
+$(window).load(function () {
+$('.loader').hide();
+    
+
+});

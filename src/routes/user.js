@@ -147,7 +147,6 @@ if(req.body.sex==="Male")
 var sex = 1;
 else
 var sex = 0;
-console.log(sex);
 if(req.body.cp==="Typical angina")
 var cp =1;
 else if(req.body.cp==="Atypical angina")
@@ -173,7 +172,6 @@ if(req.body.exang==="Yes")
 var exang = 1;
 else
 var exang = 0;
-console.log(exang);
 
 var oldpeak = req.body.oldpeak;
 if(req.body.slope==="Upsloping")
@@ -182,7 +180,6 @@ else if(req.body.slope==="Flat")
 var slope = 2;
 else
 var slope = 3;
-console.log(slope);
 
 var ca = req.body.ca;
 if(req.body.thal==="Normal")
@@ -191,7 +188,6 @@ else if(req.body.thal==="Fixed Defect")
 var thal = 6;
 else
 var thal = 7;
-console.log(thal);
 
 const a = (age-54.859030837004404)/9.081978327339046;   //60.0,1.0,4.0,130.0,206.0,0.0,2.0,132.0,1.0,2.4,2.0,2.0,7.0,4
   const b = (sex-0.6916299559471366)/0.4618202680520838;
@@ -209,7 +205,15 @@ const a = (age-54.859030837004404)/9.081978327339046;   //60.0,1.0,4.0,130.0,206
   const test = tf.tensor([[a,b,c,d,e,f,g,h,i,j,k,l,m]]);
   
   var tensor = mod.predict(test).argMax(1);
+  var user = new User();
+  user.predict = String(tensor).substring(8);
+  User.findOne({email:req.body.email},(err,existinguser)=>{
+    if(existinguser){
+      user.save();
+    }
+});
   res.render('main',{tensor:String(tensor).substring(8)});
+
 }).catch(function(err)
 {
     console.log(err);

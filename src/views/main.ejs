@@ -1,10 +1,10 @@
 <% include ./header.ejs %>
 <h2 class="heading">Please enter values for Prediction</h2>
 <body>
-<form method="post" action="/main">
+<form style="margin:0 auto" method="post" action="/main">
   <div class="form-group">
   <label for="age">Enter your age:</label>
-  <input id="age" type="text" class="form-control" placeholder ="Enter your age" name="age" value="60" />
+  <input id="age" type="text" class="form-control" placeholder ="Enter your age" name="age" required />
   </div>
   <br>
   <div class="form-group">
@@ -28,19 +28,19 @@
   <div class="form-group">
       <label for="bps">Enter Blood Pressure:</label>
 
-  <input id="bps" type="text" class="form-control"  placeholder ="Resting blood pressure (in mm Hg)" name="bps" value="130"/>
+  <input id="bps" type="text" class="form-control"  placeholder ="Resting blood pressure (in mm Hg)" name="bps" required/>
   </div>
   <br>
   <div class="form-group">
       <label for="chol">Enter your Cholestrol level:</label>
 
-  <input id="chol" type="text"  class="form-control" placeholder ="Enter serum cholestoral in mg/dl" name="chol" value="206"/>
+  <input id="chol" type="text"  class="form-control" placeholder ="Enter serum cholestoral in mg/dl" name="chol" required/>
   </div>
   <br>
   <div class="form-group">
       <label for="fbs">Enter Fasting blood pressure:</label>
 
-  <input id="fbs" type="text" class="form-control"  placeholder ="Fasting blood sugar in mg/dl" name="fbs"/>
+  <input id="fbs" type="text" class="form-control"  placeholder ="Fasting blood sugar in mg/dl" required/>
   </div>
   <br>
   <div class="form-group">
@@ -57,7 +57,7 @@
  <div class="form-group">
     <label for="thalach">Maximum heart rate achieved:</label>
 
-  <input id ="thalach" type="text" class="form-control" placeholder ="Maximum heart rate achieved" name="thalach" value="132" />
+  <input id ="thalach" type="text" class="form-control" placeholder ="Maximum heart rate achieved" name="thalach" required />
   </div>
   <br>
   <div class="form-group">
@@ -72,7 +72,7 @@
   <div class="form-group">
       <label for="oldpeak">ST depression induced by exercise relative to rest:</label>
 
-  <input od="oldpeak" type="text" class="form-control" placeholder ="ST depression induced by exercise relative to rest" name="oldpeak" value="2.4" />
+  <input od="oldpeak" type="text" class="form-control" placeholder ="ST depression induced by exercise relative to rest" name="oldpeak" required />
   </div>
   <br>
   <div class="form-group">
@@ -87,7 +87,7 @@
   <br>
   <div class="form-group">
 <label for="ca">Number of major vessels:</label>
-  <input id="ca" type="text" class="form-control" placeholder ="Number of major vessels (0-3)" name="ca" value="2"/>
+  <input id="ca" type="text" class="form-control" placeholder ="Number of major vessels (0-3)" name="ca" required/>
   </div>
   <br>
   <div class="form-group">
@@ -100,17 +100,26 @@
 </select>
   </div>
   <br>
-  <button type="submit" class="btn btn-default open">Submit</button>
+  <button onclick="myFunction()" type="submit" class="btn btn-default">Submit</button>
 </form>
-<script type='text/javascript' src="../public/js/form.js"></script>
 <% if(tensor!==""){ %>
-
-<div id="box1" class="box blurred-bg tinted">
-    <div class="content">
-      <h1>Predicted Result</h1>
-  <p><%= tensor %></p>
-        <p>Drag this box to move around</p>
+    <div class="box">
+<p style="text-align:center">Risk level : <b style="font-weight:bold"><%= tensor %></b></p>
+<br><br>
+<% if(tensor==="   [3]"){ %>
+    <p style="text-align:center"><i>High Risk</i></p>
+    <% }
+    if(tensor==="   [2]"){ %>
+        <p style="text-align:center"><i>Medium Risk</i></p>
+        <% } 
+        if(tensor==="   [1]"){ %>
+            <p style="text-align:center"><i>Low Risk</i></p>
+            <% } 
+            if(tensor==="   [0]"){ %>
+                <p style="text-align:center"><i>No Risk</i></p>
+                <% } %>
+<br><br>
+<button type="button" onClick="func()" class="btn btn-danger">Dismiss</button>
     </div>
-  </div>
   <% } %>
 <% include ./footer.ejs %>
