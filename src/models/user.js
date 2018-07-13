@@ -7,7 +7,8 @@ var UserSchema = new Schema({
     email: { type: String, unique: true, lowercase:true, trim:true},
     password : {type:String, max: 100},
     name: {type:String, default:'',trim:true},
-    predict: {type:String,default:''}
+    predict: {type:String,default:''},
+    img: { data: Buffer, contentType: String }
 
     
 });

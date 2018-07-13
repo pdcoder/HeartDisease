@@ -15,20 +15,6 @@ app.use(function(req, res, next) {
   next();
 });
 
- /*
-module.exports = function (req, res, next) {
-  // CORS headers
-  res.header("Access-Control-Allow-Origin", "YOUR_URL"); // restrict it to the required domain
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-  // Set custom headers for CORS
-  res.header("Access-Control-Allow-Headers", "Content-type,Accept,X-Custom-Header");
-
-  if (req.method === "OPTIONS") {
-      return res.status(200).end();
-  }
-
-  return next();
-};*/
 
 router.get('/',(req,res,next)=>{
 
@@ -46,7 +32,7 @@ router.get('/',(req,res,next)=>{
       // return next();
       } else {
         console.log(req.session.userId);
-        return res.render('profile',{name:user.name});
+        return res.render('profile',{name:user.name,tensor1:req.flash('tensor')});
       }
  
 }
@@ -112,7 +98,7 @@ router.get('/profile', function (req, res, next) {
           // return next();
           } else {
 
-           return res.render('profile',{name:user.name}); 
+           return res.render('profile',{name:user.name,tensor1:user.predict}); 
      }
         }
       });
@@ -205,13 +191,14 @@ const a = (age-54.859030837004404)/9.081978327339046;   //60.0,1.0,4.0,130.0,206
   const test = tf.tensor([[a,b,c,d,e,f,g,h,i,j,k,l,m]]);
   
   var tensor = mod.predict(test).argMax(1);
-  var user = new User();
-  user.predict = String(tensor).substring(8);
-  User.findOne({email:req.body.email},(err,existinguser)=>{
-    if(existinguser){
-      user.save();
+  User.findById(req.session.userId).exec(function(err,use){
+    if(use){
+      use.predict = String(tensor).substring(8);
+      req.flash('tensor',String(tensor).substring(8) );
+//console.log(req.flash('tensor'));
+use.save();
     }
-});
+  });
   res.render('main',{tensor:String(tensor).substring(8)});
 
 }).catch(function(err)

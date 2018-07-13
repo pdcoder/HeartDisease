@@ -8,7 +8,6 @@ var flash= require('connect-flash');
 const mongoose = require('mongoose');
 var path = require('path');
 var keys = require('./src/config/keys');
-//var cors = require('cors')
 
 mongoose.connect(keys.mongoURI);
 var db = mongoose.connection;
@@ -18,21 +17,6 @@ db.once('open', function () {
   console.log("We are connected");
 });
 
-
-
-/*module.exports = function (req, res, next) {
-  // CORS headers
-  res.header("Access-Control-Allow-Origin", "YOUR_URL"); // restrict it to the required domain
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-  // Set custom headers for CORS
-  res.header("Access-Control-Allow-Headers", "Content-type,Accept,X-Custom-Header");
-
-  if (req.method === "OPTIONS") {
-      return res.status(200).end();
-  }
-
-  return next();
-};*/
 
 app.use(cookie());
 //app.use(cors());

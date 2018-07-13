@@ -10,12 +10,13 @@ function func(){
     $('.box').hide();
 }
 
+$(window).load(function () {
+    $('.loader').hide();
+});
 $('.card').click(function(){
     $(this).toggleClass('flipped');
   });
 
-$(window).load(function () {
-$('.loader').hide();
     
 
-});
+
