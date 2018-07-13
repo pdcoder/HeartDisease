@@ -27,6 +27,7 @@
     "@tensorflow/tfjs-node": "^0.1.7",
     "bcrypt-nodejs": "0.0.3",
     "brain": "^1.0.0",
+    "connect-flash": "^0.1.1",
     "connect-mongo": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "create-react-app": "^1.5.2",

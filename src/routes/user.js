@@ -3,23 +3,18 @@ var User = require('../models/user');
 var express = require('express');
 var app = express();
 var request = require('request');
-var passportConf = require('../services/passport');
-var passport = require('passport');
 var async = require('async');
 var router = require('express').Router();
 const tf = require('@tensorflow/tfjs');
 require('@tensorflow/tfjs-node');
 //tf.setBackend('tensorflow');
-const https = require('https');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-router.get('/products/:id', function (req, res, next) {
-  res.json({msg: 'This is CORS-enabled for all origins!'})
-})
+
  /*
 module.exports = function (req, res, next) {
   // CORS headers
@@ -36,6 +31,7 @@ module.exports = function (req, res, next) {
 };*/
 
 router.get('/',(req,res,next)=>{
+
   User.findById(req.session.userId)
   .exec(function (error, user) {
     if (error) {
@@ -43,7 +39,7 @@ router.get('/',(req,res,next)=>{
    //  return next();
     } else {
       if (user === null) {
-     return res.render('signup');
+     return res.render('signup',{erro:req.flash('er') , erro1:req.flash('er1')});
        // var err = new Error('Not authorized! Go back!');
        //return next(err);
 
@@ -60,9 +56,11 @@ router.get('/',(req,res,next)=>{
 router.post('/login',(req,res,next)=>{
 User.authenticate(req.body.email, req.body.password, function (error, user) {
     if (error || !user) {
-      var err = new Error('Wrong email or password.');
-      err.status = 401;
-      return next(err);
+     // var err = new Error('Wrong email or password.');
+     // err.status = 401;
+      //return next(err);
+     req.flash('er', 'Wrong email or password');
+      return res.redirect('/');
     } else {
       req.session.userId = user._id;
      // console.log(req.session.userId);
@@ -82,9 +80,10 @@ router.post('/signup',(req,res,next)=>{
         User.findOne({email:req.body.email},(err,existinguser)=>{
             if(existinguser){
             //req.flash('errors','Account with that email already exists');
-            res.send("Exists");
-            return res.redirect('/');
-        }else{
+           // res.send("Exists");
+           req.flash('er1', 'Account with that email already exists');
+           return res.redirect('/');
+          }else{
             user.save((err,user)=>{ 
                 if (err) {
                     console.log(err);
@@ -218,7 +217,26 @@ const a = (age-54.859030837004404)/9.081978327339046;   //60.0,1.0,4.0,130.0,206
 
 });
 
+router.get('/about',function (req, res, next) {
+  User.findById(req.session.userId)
+    .exec(function (error, user) {
+      if (error) {
+       // return next(error);
+     //  return next();
+      } else {
+        if (user === null) {
+          console.log(req.session);
+          return res.redirect('/');
+    
 
+        // return next();
+        } else {
+
+         return res.render('about'); 
+   }
+      }
+    });
+});
 
 
 

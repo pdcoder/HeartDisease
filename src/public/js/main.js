@@ -6,3 +6,7 @@ function myFunction() {
         x.className = "topnav";
     }
 }
+
+$('.card').click(function(){
+    $(this).toggleClass('flipped');
+  });

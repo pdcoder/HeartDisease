@@ -4,7 +4,7 @@ var cookie = require('cookie-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var app = express();
-//var flash= require('connect-flash');
+var flash= require('connect-flash');
 const mongoose = require('mongoose');
 var path = require('path');
 var keys = require('./src/config/keys');
@@ -43,19 +43,17 @@ app.use(session({
   secure: true,
     resave: false,
     saveUninitialized: false,
-    cookie: {expires: 600000},
+    cookie: {expires: 600000*5},
     store: new MongoStore({url:keys.mongoURI,autoReconnect:true})
   }));
   
 //app.use(csrf({ cookie : false }));
 
+app.use(flash());
 
 app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 var router = express.Router();
-require('./src/services/passport');
-const route = require('./src/routes/authRoutes');
-var passport = require('passport');
 
 const userroute = require('./src/routes/user');
 var bycrypt = require('bcrypt-nodejs');
@@ -67,8 +65,6 @@ var engine = require('ejs-mate');
 
 app.set('view engine', 'ejs');
 app.engine('ejs', engine);
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(userroute);
 app.set('views', path.join(__dirname, './src/views'));
 app.use(express.static(__dirname + '/src/public'));
@@ -85,7 +81,6 @@ app.use((req, res, next) => {
     res.status(500).send('Something broke!');
   });
 
-  
   
 const PORT = process.env.PORT || 3900;
 app.listen(PORT);

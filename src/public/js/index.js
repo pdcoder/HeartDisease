@@ -8,7 +8,6 @@
 });
 
 $("#login").click(function() {
-  console.log("dddd");
   $(".message").css("transform", "translateX(0)");
   if ($(".message").hasClass("login")) {
     $(".message").removeClass("signup");
