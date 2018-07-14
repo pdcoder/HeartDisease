@@ -57,7 +57,6 @@ router.post('/login', (req, res, next) => {
 
 
 router.post('/signup', (req, res, next) => {
-  async.waterfall([(callback) => {
     var user = new User();
     user.email = req.body.email;
     user.password = req.body.password;
@@ -75,14 +74,13 @@ router.post('/signup', (req, res, next) => {
             console.log(err);
             return (err);
           }
-          callback(null, user);
 
         });
+        return res.render('profile',{name:"",tensor1:""});
       }
-    });
-  }]);
+    }
+  );
 });
-
 router.get('/profile', function (req, res, next) {
   User.findById(req.session.userId)
     .exec(function (error, user) {
