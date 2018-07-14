@@ -46,7 +46,12 @@ p {
   -webkit-animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
   animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
 }
-
+@media(max-width:600px)
+{
+  .front .back{
+    width:100%;
+  }
+}
 .profile-card header {
   width: 179px;
   height: 280px;
@@ -63,23 +68,7 @@ p {
   animation: moveIn 1s 3.1s ease forwards;
 }
 
-@media(max-width:500px){
-.profile-card{
-  width: 80%;
-  height: 280px;
-  padding: 40px 20px 30px 20px;
-  display: inline-block;
-  float: left;
-  border-right: 2px dashed #EEEEEE;
-  background: #FFFFFF;
-  color: #000000;
-  margin-top: 50px;
-  opacity: 0;
-  text-align: center;
-  -webkit-animation: moveIn 1s 3.1s ease forwards;
-  animation: moveIn 1s 3.1s ease forwards;
-}
-}
+
 
 
 .profile-card header h1 {
@@ -528,7 +517,7 @@ form{
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
 @media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;z-index: 99999999999;}
+  .topnav.responsive {z-index: 99999999999;}
   .topnav.responsive a.icon {
     position: absolute;
     right: 0;
@@ -892,12 +881,7 @@ figure a{
   height: 100%;
 }
 
-@media (min-width: 450px) {
-  .container{
-    left: 50%;
-    margin-left:-225px;
-  }
-}
+
 
 .error{
   font-weight: bold;
