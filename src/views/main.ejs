@@ -1,125 +1,141 @@
 <% include ./header.ejs %>
-<h2 class="heading">Please enter values for Prediction</h2>
-<body>
-<form style="margin:0 auto" method="post" action="/main">
-  <div class="form-group">
-  <label style="font-weight: bold" foe="age">Enter your age:</label>
-  <input id="age" type="text" class="form-control" placeholder ="Enter your age" name="age" required />
-  </div>
-  <br>
-  <div class="form-group">
-      <label style="font-weight: bold" for="sex">Enter your gender:</label>
-  <select id="sex" class="form-control" name="sex">
-    <option>Male</option>
-    <option>Female</option>
-  </select>
-  </div>
-  <br>
-  <div class="form-group">
-      <label style="font-weight: bold" for="cp">Enter chest pain type:</label>
-  <select id="cp" class="form-control" name="cp">
-    <option>Typical angina</option>
-    <option>Atypical angina</option>
-    <option>Non-anginal pain</option>
-    <option>Assymptotic</option>
-    </select>
-  </div>
-  <br>
-  <div class="form-group">
-      <label style="font-weight: bold" for="bps">Enter Blood Pressure:</label>
+    <h2 class="heading">Please enter values for Prediction</h2>
 
-  <input id="bps" type="text" class="form-control"  placeholder ="Resting blood pressure (in mm Hg)" name="bps" required/>
-  </div>
-  <br>
-  <div class="form-group">
-      <label style="font-weight: bold" for="chol">Enter your Cholestrol level:</label>
+    <body>
+        <form style="margin:0 auto" method="post" action="/main">
+            <div class="form-group">
+                <label style="font-weight: bold" foe="age">Enter your age:</label>
+                <input id="age" type="text" class="form-control" placeholder="Enter your age" name="age" required />
+            </div>
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold" for="sex">Enter your gender:</label>
+                <select id="sex" class="form-control" name="sex">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold" for="cp">Enter chest pain type:</label>
+                <select id="cp" class="form-control" name="cp">
+                    <option>Typical angina</option>
+                    <option>Atypical angina</option>
+                    <option>Non-anginal pain</option>
+                    <option>Assymptotic</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold" for="bps">Enter Blood Pressure:</label>
 
-  <input id="chol" type="text"  class="form-control" placeholder ="Enter serum cholestoral in mg/dl" name="chol" required/>
-  </div>
-  <br>
-  <div class="form-group">
-      <label style="font-weight: bold" for="fbs">Enter Fasting blood pressure:</label>
+                <input id="bps" type="text" class="form-control" placeholder="Resting blood pressure (in mm Hg)" name="bps" required/>
+            </div>
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold" for="chol">Enter your Cholestrol level:</label>
 
-  <input id="fbs" type="text" class="form-control"  placeholder ="Fasting blood sugar in mg/dl" required/>
-  </div>
-  <br>
-  <div class="form-group">
-      <label style="font-weight: bold" for="ecg">Enter ECG type:</label>
+                <input id="chol" type="text" class="form-control" placeholder="Enter serum cholestoral in mg/dl" name="chol" required/>
+            </div>
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold" for="fbs">Enter Fasting blood pressure:</label>
 
-  <select id="ecg" class="form-control"   name="restecg">
-    <option>Normal</option>
-    <option>Having ST-T wave abnormality</option>
-    <option>Showing probable or definite left ventricular hypertrophy</option>
+                <input id="fbs" type="text" class="form-control" placeholder="Fasting blood sugar in mg/dl" required/>
+            </div>
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold" for="ecg">Enter ECG type:</label>
 
-  </select>
-  </div>
-  <br>
- <div class="form-group">
-    <label  style="font-weight: bold" for="thalach">Maximum heart rate achieved:</label>
+                <select id="ecg" class="form-control" name="restecg">
+                    <option>Normal</option>
+                    <option>Having ST-T wave abnormality</option>
+                    <option>Showing probable or definite left ventricular hypertrophy</option>
 
-  <input id ="thalach" type="text" class="form-control" placeholder ="Maximum heart rate achieved" name="thalach" required />
-  </div>
-  <br>
-  <div class="form-group">
-      <label style="font-weight: bold" for="exang">Exarcise induced angina:</label>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold" for="thalach">Maximum heart rate achieved:</label>
 
-  <select id="exang" class="form-control" name="exang" >
-    <option>Yes</option>
-      <option>No</option>
-      </select>
-  </div>
-  <br>
-  <div class="form-group">
-      <label style="font-weight: bold" for="oldpeak">ST depression induced by exercise relative to rest:</label>
+                <input id="thalach" type="text" class="form-control" placeholder="Maximum heart rate achieved" name="thalach" required />
+            </div>
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold" for="exang">Exarcise induced angina:</label>
 
-  <input od="oldpeak" type="text" class="form-control" placeholder ="ST depression induced by exercise relative to rest" name="oldpeak" required />
-  </div>
-  <br>
-  <div class="form-group">
-      <label style="font-weight: bold" for="slope">Slope of the peak exercise ST segment:</label>
+                <select id="exang" class="form-control" name="exang">
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold" for="oldpeak">ST depression induced by exercise relative to rest:</label>
 
-  <select id="slope" class="form-control"name="slope">
-    <option>Upsloping</option>
-    <option>Flat</option>
-    <option>Downsloping</option>
-</select>
-  </div>
-  <br>
-  <div class="form-group">
-<label style="font-weight: bold" for="ca">Number of major vessels:</label>
-  <input id="ca" type="text" class="form-control" placeholder ="Number of major vessels (0-3)" name="ca" required/>
-  </div>
-  <br>
-  <div class="form-group">
-      <label style="font-weight: bold" for="thal">Thalassamia:</label>
+                <input od="oldpeak" type="text" class="form-control" placeholder="ST depression induced by exercise relative to rest" name="oldpeak"
+                    required />
+            </div>
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold" for="slope">Slope of the peak exercise ST segment:</label>
 
-  <select id="thal" class="form-control"  name="thal">
-    <option>Normal</option>
-    <option>Fixed Defect</option>
-    <option>Reversible Defect</option>
-</select>
-  </div>
-  <br>
-  <button onclick="myFunction()" type="submit" class="btn btn-default">Submit</button>
-</form>
-<% if(tensor!==""){ %>
-    <div class="box">
-<p style="text-align:center">Risk level : <b style="font-weight:bold"><%= tensor %></b></p>
-<br><br>
-<% if(tensor==="   [3]"){ %>
-    <p style="text-align:center"><i>High Risk</i></p>
-    <% }
+                <select id="slope" class="form-control" name="slope">
+                    <option>Upsloping</option>
+                    <option>Flat</option>
+                    <option>Downsloping</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold" for="ca">Number of major vessels:</label>
+                <input id="ca" type="text" class="form-control" placeholder="Number of major vessels (0-3)" name="ca" required/>
+            </div>
+            <br>
+            <div class="form-group">
+                <label style="font-weight: bold" for="thal">Thalassamia:</label>
+
+                <select id="thal" class="form-control" name="thal">
+                    <option>Normal</option>
+                    <option>Fixed Defect</option>
+                    <option>Reversible Defect</option>
+                </select>
+            </div>
+            <br>
+            <button onclick="myFunction()" type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <% if(tensor!==""){ %>
+            <div class="box">
+                <p style="text-align:center">Risk level :
+                    <b style="font-weight:bold">
+                        <%= tensor %>
+                    </b>
+                </p>
+                <br>
+                <br>
+                <% if(tensor==="   [3]"){ %>
+                    <p style="text-align:center">
+                        <i>High Risk</i>
+                    </p>
+                    <% }
     if(tensor==="   [2]"){ %>
-        <p style="text-align:center"><i>Medium Risk</i></p>
-        <% } 
+                        <p style="text-align:center">
+                            <i>Medium Risk</i>
+                        </p>
+                        <% } 
         if(tensor==="   [1]"){ %>
-            <p style="text-align:center"><i>Low Risk</i></p>
-            <% } 
+                            <p style="text-align:center">
+                                <i>Low Risk</i>
+                            </p>
+                            <% } 
             if(tensor==="   [0]"){ %>
-                <p style="text-align:center"><i>No Risk</i></p>
-                <% } %>
-<br><br>
-<button type="button" onClick="func()" class="btn btn-danger">Dismiss</button>
-    </div>
-  <% } %>
-<% include ./footer.ejs %>
+                                <p style="text-align:center">
+                                    <i>No Risk</i>
+                                </p>
+                                <% } %>
+                                    <br>
+                                    <br>
+                                    <button type="button" onClick="func()" class="btn btn-danger">Dismiss</button>
+            </div>
+            <% } %>
+                <% include ./footer.ejs %>

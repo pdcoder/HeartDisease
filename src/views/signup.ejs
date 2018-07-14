@@ -1,8 +1,8 @@
 <% include ./headerlogin.ejs %>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
 
-<div class="container">
+  <div class="container">
     <div class="message signup">
       <div class="btn-wrapper">
         <button class="button" id="signup">SignUp</button>
@@ -17,23 +17,27 @@
         <input type="password" name="password" placeholder="Password">
         <button class="button">Sign Up</button>
         <% if(erro1.length>0){ %>
-          <p style="color:red" class="error"><%= erro1 %></p>
-          <% } %>   
-          </form>
+          <p style="color:red" class="error">
+            <%= erro1 %>
+          </p>
+          <% } %>
+      </form>
     </div>
     <div class="form form--login">
       <div class="form--heading">Welcome back! </div>
       <form action="/login" method="POST" autocomplete="off">
         <input type="email" name="email" placeholder="Email">
-        <input type="password"  name="password" placeholder="Password">
+        <input type="password" name="password" placeholder="Password">
         <button class="button">Login</button>
         <% if(erro.length>0){ %>
-          <p style="color:red" class="error"><%= erro %></p>
-          <% } %> 
-        
+          <p style="color:red" class="error">
+            <%= erro %>
+          </p>
+          <% } %>
+
     </div>
   </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-  <script  src="js/index.js"></script>
+  <script src="js/index.js"></script>
 
   <% include ./footer.ejs %>

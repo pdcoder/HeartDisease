@@ -1,93 +1,99 @@
 <head>
-    <meta charset="UTF-8">
-    <title>Heart Disease Predictor</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto'>
-    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
-    <link href="/css/main.css" rel="stylesheet" type="text/css">
-    <script src="/js/main.js"></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico"/>
-    <meta name="theme-color" content="#D0D0E7" />
-    </head>
-    <body style="margin: 0">
-        <div class="loader">Loading...</div>
-      <div class="topnav" id="myTopnav">
-            <a href="/" class="active">MyHeart</a>
-            <a href="/profile">Profile</a>
-            <a href="/main">Predict</a>
-            <a href="/about">About</a>
-            <a href="/logout">Logout</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <i class="fa fa-bars"></i>
-            </a>
-          </div>
-          <div class="border">
-<aside class="profile-card">
-  <header>
-    <!-- here’s the avatar -->
-    <a href="#">
-      <img src="/assets/man.png" class="hoverZoomLink">
+  <meta charset="UTF-8">
+  <title>Heart Disease Predictor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto'>
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+  <link href="/css/main.css" rel="stylesheet" type="text/css">
+  <script src="/js/main.js"></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <meta name="theme-color" content="#D0D0E7" />
+</head>
+
+<body style="margin: 0">
+  <div class="loader">Loading...</div>
+  <div class="topnav" id="myTopnav">
+    <a href="/" class="active">MyHeart</a>
+    <a href="/profile">Profile</a>
+    <a href="/main">Predict</a>
+    <a href="/about">About</a>
+    <a href="/logout">Logout</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
     </a>
-
-    <!-- the username -->
-    <h1>
-      <% if (name){ %>
-            <%= name.charAt(0).toUpperCase().concat(name.slice(1))%>
-            <% } %>
-          </h1>
-
-    <!-- and role or location -->
-    <h2>
-            Welcome
-          </h2>
-
-  </header>
-
-  <!-- bit of a bio; who are you? -->
-  <div class="profile-bio">
-      <% if(tensor1.length>0){ %>
-    <p>
-      Your last pedicted Heart Risk Level was : <b><%= tensor1 %></b>
-    </p>
-<% } else {%>
-  <p>
-      You havent made any prediction yet. Please proceed towards a prediction.
-    </p>
-    <% } %>
   </div>
+  <div class="border">
+    <aside class="profile-card">
+      <header>
+        <!-- here’s the avatar -->
+        <a href="#">
+          <img src="/assets/man.png" class="hoverZoomLink">
+        </a>
 
-  <!-- some social links to show off -->
-  <ul class="profile-social-links">
-    <li>
-      <a target="_blank" href="https://www.facebook.com/creativedonut">
-        <i class="fa fa-facebook"></i>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" href="https://twitter.com/dropyourbass">
-        <i class="fa fa-twitter"></i>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" href="https://github.com/vipulsaxena">
-        <i class="fa fa-github"></i>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" href="https://www.behance.net/vipulsaxena">
-       
-        <i class="fa fa-behance"></i>
-      </a>
-    </li>
-  </ul>
-</aside>
-<script>
-  $(window).load(function () {
-    $('.loader').hide();
-});
-</script>
-<div class="footer" style="position: fixed">
-    <p class="foot">Copyright &copy; 2018 <a target="_blank" href="https://www.facebook.com/savage.pd756859">Prakash Das</a></p>
-</div>
+        <!-- the username -->
+        <h1>
+          <% if (name){ %>
+            <%= name.charAt(0).toUpperCase().concat(name.slice(1))%>
+              <% } %>
+        </h1>
+
+        <!-- and role or location -->
+        <h2>
+          Welcome
+        </h2>
+
+      </header>
+
+      <!-- bit of a bio; who are you? -->
+      <div class="profile-bio">
+        <% if(tensor1.length>0){ %>
+          <p>
+            Your last pedicted Heart Risk Level was :
+            <b>
+              <%= tensor1 %>
+            </b>
+          </p>
+          <% } else {%>
+            <p>
+              You havent made any prediction yet. Please proceed towards a prediction.
+            </p>
+            <% } %>
+      </div>
+
+      <!-- some social links to show off -->
+      <ul class="profile-social-links">
+        <li>
+          <a target="_blank" href="https://www.facebook.com/creativedonut">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://twitter.com/dropyourbass">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://github.com/vipulsaxena">
+            <i class="fa fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://www.behance.net/vipulsaxena">
+
+            <i class="fa fa-behance"></i>
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <script>
+      $(window).load(function () {
+        $('.loader').hide();
+      });
+    </script>
+    <div class="footer" style="position: fixed">
+      <p class="foot">Copyright &copy; 2018
+        <a target="_blank" href="https://www.facebook.com/savage.pd756859">Prakash Das</a>
+      </p>
+    </div>
