@@ -1,2 +1,5 @@
 # MyHeart
-This is a chat application which I developed as to experiment with my knowledge of Websockets. I developed the application with NodeJS. The frontend is developed with plain old HTML. In this app, an user can can enter any enter a chat room, and can chat with members who enter the same chat room. I have used a popular library - Socket.io to utilize its ability to create and bind to web socket events. I have made use of MomentJS to format timestamps that appear along with messages. I have also used MustacheJS to achieve unit testing in development mode. In the future, I am looking forward to integrating a chatbot in the application which will provide effective feedback to the user.
+Heart related problems have become a norm in our society these days. Often we are advised to carry out certain tests to evaluate the risk that is associated with our heart. But it is not possible for any average person to
+comprehend the results of the tests. So, I have developed this app to tell us the risk level on a scale of 0-4, with the help of Artificial Neural Networks and TensorflowJS running in the backend with NodeJS.
+
+The Link of the project : https://myheartpd.herokuapp.com
